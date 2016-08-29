@@ -42,7 +42,7 @@
 
 .Video-component {
   text-align: left;
-  padding: 4px;
+  padding: 4px 60px 4px 4px;
   border-bottom: 1px solid #222;
   color: #fff;
   font-weight: bold;
@@ -62,17 +62,21 @@
   background: #129912;
 }
 
+.Video-CheersKevin {
+  background: #aa4488;
+}
+
 .Video-time {
   position: absolute;
   right: 4px;
   top: 4px;
 }
 
-.Video-Scheduled, .Video-Uploading {
+.Video-scheduled, .Video-uploading {
   opacity: 0.7;
 }
 
-.Video-Uploading:after {
+.Video-uploading:after {
   content: '';
   position: absolute;
   top: 0px;
