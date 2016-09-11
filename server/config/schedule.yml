@@ -1,0 +1,4 @@
+youtube_updater:
+  cron: "*/5 * * * *"
+  class: "YouTubeUpdateWorker"
+  queue: default

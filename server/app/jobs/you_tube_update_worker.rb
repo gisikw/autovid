@@ -1,7 +1,7 @@
-require 'yt'
+class YouTubeUpdateWorker
+  include Sidekiq::Worker
 
-class Fetcher
-  def self.fetch!
+  def perform
     info = YAML::load_file('config/ytsecrets.yml')
     Yt.configure do |config|
       config.client_id = info['youtube']['client_id']
@@ -27,6 +27,5 @@ class Fetcher
         end
       end
     end
-    true
   end
 end

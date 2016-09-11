@@ -35,9 +35,31 @@
   border: 1px solid #666;
   margin: 20px;
   vertical-align: top;
+  overflow-y: auto;
+}
+
+.Calendar-day.today {
+  border-color: #0ac;
+}
+
+.Calendar-day-name {
+  background: #ccc;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  font-weight: bold;
+  letter-spacing: 1.3px;
+}
+
+.today .Calendar-day-name {
+  background: #0ac;
+  color: #fff;
 }
 
 .Week-wrap {
+  display: block;
 }
 
 .Video-component {
@@ -66,6 +88,11 @@
   background: #aa4488;
 }
 
+.Video-CheersKevinVlogs {
+  background: #cccc22;
+  color: #000;
+}
+
 .Video-time {
   position: absolute;
   right: 4px;
@@ -73,7 +100,7 @@
 }
 
 .Video-scheduled, .Video-uploading {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .Video-uploading:after {

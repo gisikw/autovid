@@ -51,30 +51,25 @@ class App extends Component {
       xhr.get('http://localhost:4000').then((data) => {
         this.setState({ data: JSON.parse(data) });
       });
-    }, 500);
+    }, 5000);
   }
 
   render() {
-    let secondDay = getStartingDay();
-    secondDay.setDate(secondDay.getDate() + 1);
-
-    let thirdDay = getStartingDay();
-    thirdDay.setDate(thirdDay.getDate() + 2);
-
     return (
       <div className="App">
         <div className="App-header">
-          <h2>Test Dashboard</h2>
+          <h2>AutoVid Dashboard</h2>
         </div>
         {
-          [0,1,2,3,4,5,6,7,8,9,10,11,12,13].map((offset) => {
+          Array(28).fill(0).map((_, offset) => {
             let start = getStartingDay();
+            start.setDate(start.getDate() - 7); // tmp
             start.setDate(start.getDate() + offset);
 
             let children = [];
             this.state.data.forEach((videoData) => {
               let vidPubMills = videoData.publishTime * 1000;
-              if (vidPubMills > start.getTime() && vidPubMills < (start.getTime() + (24 * 60 * 60 * 1000))) {
+              if (vidPubMills >= start.getTime() && vidPubMills < (start.getTime() + (24 * 60 * 60 * 1000))) {
                 children.push(<Video {...videoData} />);
               }
             });
