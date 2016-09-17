@@ -93,6 +93,11 @@
   color: #000;
 }
 
+.Video-Placeholder {
+  background: #efe;
+  color: #666;
+}
+
 .Video-time {
   position: absolute;
   right: 4px;

@@ -1,9 +1,11 @@
 class YouTubeUpdateWorker
   include Sidekiq::Worker
+  sidekiq_options retry: false
 
   def perform
     info = YAML::load_file('config/ytsecrets.yml')
     Yt.configure do |config|
+      config.log_level = :debug
       config.client_id = info['youtube']['client_id']
       config.client_secret = info['youtube']['client_secret']
     end
