@@ -7,6 +7,6 @@ class VideosController < ApplicationController
     start_date -= 7.days # tmp
     end_date = start_date + 29.days
 
-    render json: Video.where(publish_time: start_date..end_date)
+    render json: Video.where('publish_time > ?', start_date)
   end
 end

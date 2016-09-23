@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'yt'
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'sidekiq-unique-jobs'
 gem 'sinatra', require: false, github: 'sinatra'
 
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
