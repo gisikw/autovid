@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
 import CalendarDay from '../elements/CalendarDay';
 import Video from '../elements/Video';
-
-function xhr({ method, url }) {
-  return new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest();
-    req.onerror = () => reject(Error('Network Error'));
-    req.onload = () => {
-      if (req.status >= 200 && req.status < 300) resolve(req.responseText);
-      else reject(Error(req.statusText));
-    };
-    req.open(method, url, true);
-    req.send();
-  });
-}
-xhr.get = (url, opts = {}) => xhr(Object.assign({ method: 'GET', url }, opts));
+import xhr from '../../utils/xhr';
 
 function getStartingDay() {
   let date = new Date();
@@ -66,11 +53,12 @@ class DashboardPage extends Component {
             this.state.data.forEach((videoData) => {
               let vidPubMills = videoData.publishTime * 1000;
               if (vidPubMills >= start.getTime() && vidPubMills < (start.getTime() + (24 * 60 * 60 * 1000))) {
-                children.push(<Video {...videoData} />);
+                children.push(<Video key={videoData.id} {...videoData} />);
               }
             });
+            let sortedChildren = (children || []).sort((a,b) => a.props.publishTime - b.props.publishTime)
 
-            return <CalendarDay key={start} start={start} children={children} />
+            return <CalendarDay key={start} start={start} children={sortedChildren} />
           })
         }
       </div>

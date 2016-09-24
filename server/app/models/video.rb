@@ -5,7 +5,8 @@ class Video < ApplicationRecord
       title: title,
       publishTime: publish_time.to_i,
       channel: channel,
-      status: status
+      status: status,
+      id: youtube_id,
     }
   end
 

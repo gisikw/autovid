@@ -1,18 +1,5 @@
 import React, { Component } from 'react';
-
-function xhr({ method, url }) {
-  return new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest();
-    req.onerror = () => reject(Error('Network Error'));
-    req.onload = () => {
-      if (req.status >= 200 && req.status < 300) resolve(req.responseText);
-      else reject(Error(req.statusText));
-    };
-    req.open(method, url, true);
-    req.send();
-  });
-}
-xhr.get = (url, opts = {}) => xhr(Object.assign({ method: 'GET', url }, opts));
+import xhr from '../../utils/xhr';
 
 function Series(params) {
   let time = (new Date(params.publish_at*1000)).toTimeString();
@@ -65,7 +52,7 @@ class SeriesPage extends Component {
   render() {
     return (
       <div>
-        { this.state.data.map((params) => <Series {...params } />) }
+        { this.state.data.map((params) => <Series key={params.title} {...params } />) }
       </div>
     );
   }

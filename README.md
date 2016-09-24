@@ -16,9 +16,11 @@ Things it should do:
   - Caveats:
     - [ ] No easy way to configure new series (must be done through console)
     - [ ] Monetization is not working
-    - [ ] Has not been tested with large files
+    - [X] Has not been tested with large files
     - [ ] Unique jobs potentially not working
 
 - [ ] Auto-import footage from SD cards
 
 - [ ] Auto-reencode screen recordings as CFR
+
+- [ ] Host it somewhere
