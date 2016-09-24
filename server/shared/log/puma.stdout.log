@@ -1,0 +1,155 @@
+=== puma startup: 2016-09-24 02:48:43 +0000 ===
+[823] * Starting control server on unix:///tmp/puma-status-1474685323491-823
+[823] - Worker 3 (pid: 1670) booted, phase: 0
+[823] - Worker 2 (pid: 1662) booted, phase: 0
+[823] - Worker 1 (pid: 1657) booted, phase: 0
+[823] - Worker 0 (pid: 1653) booted, phase: 0
+=== puma startup: 2016-09-24 02:58:16 +0000 ===
+[3553] * Starting control server on unix:///tmp/puma-status-1474685896115-3553
+[3553] - Worker 1 (pid: 3569) booted, phase: 0
+[3553] - Worker 0 (pid: 3565) booted, phase: 0
+[3553] - Worker 2 (pid: 3573) booted, phase: 0
+[3553] - Worker 3 (pid: 3577) booted, phase: 0
+Started GET "/" for 127.0.0.1 at 2016-09-24 02:58:46 +0000
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+	bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.0.0.1) lib/active_record/migration.rb:572:in `check_pending!'
+activerecord (5.0.0.1) lib/active_record/migration.rb:548:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+[3553] - Gracefully shutting down workers...
+[3553] === puma shutdown: 2016-09-24 02:58:50 +0000 ===
+[3553] - Goodbye!
+Exiting
+[823] - Gracefully shutting down workers...
+[823] === puma shutdown: 2016-09-24 02:58:54 +0000 ===
+[823] - Goodbye!
+=== puma startup: 2016-09-24 02:59:08 +0000 ===
+[4055] * Starting control server on unix:///tmp/puma-status-1474685948184-4055
+[4055] - Worker 0 (pid: 4136) booted, phase: 0
+[4055] - Worker 2 (pid: 4144) booted, phase: 0
+[4055] - Worker 3 (pid: 4148) booted, phase: 0
+[4055] - Worker 1 (pid: 4140) booted, phase: 0
+[4055] - Gracefully shutting down workers...
+[4055] === puma shutdown: 2016-09-24 03:05:35 +0000 ===
+[4055] - Goodbye!
+=== puma startup: 2016-09-24 03:05:39 +0000 ===
+[4368] * Starting control server on unix:///tmp/puma-status-1474686339011-4368
+[4368] - Worker 2 (pid: 4457) booted, phase: 0
+[4368] - Worker 0 (pid: 4449) booted, phase: 0
+[4368] - Worker 1 (pid: 4453) booted, phase: 0
+[4368] - Worker 3 (pid: 4461) booted, phase: 0
+[4368] - Gracefully shutting down workers...
+[4368] === puma shutdown: 2016-09-24 03:23:25 +0000 ===
+[4368] - Goodbye!
+=== puma startup: 2016-09-24 03:23:29 +0000 ===
+[4642] * Starting control server on unix:///tmp/puma-status-1474687409082-4642
+[4642] - Worker 0 (pid: 4723) booted, phase: 0
+[4642] - Worker 2 (pid: 4731) booted, phase: 0
+[4642] - Worker 1 (pid: 4727) booted, phase: 0
+[4642] - Worker 3 (pid: 4735) booted, phase: 0
+[4642] - Gracefully shutting down workers...
+[4642] === puma shutdown: 2016-09-24 03:42:21 +0000 ===
+[4642] - Goodbye!
+=== puma startup: 2016-09-24 03:42:25 +0000 ===
+[6727] * Starting control server on unix:///tmp/puma-status-1474688545159-6727
+[6727] - Worker 0 (pid: 6808) booted, phase: 0
+[6727] - Worker 2 (pid: 6816) booted, phase: 0
+[6727] - Worker 1 (pid: 6812) booted, phase: 0
+[6727] - Worker 3 (pid: 6820) booted, phase: 0
+[6727] - Gracefully shutting down workers...
+[6727] === puma shutdown: 2016-09-24 03:53:25 +0000 ===
+[6727] - Goodbye!
+=== puma startup: 2016-09-24 03:53:28 +0000 ===
+[7036] * Starting control server on unix:///tmp/puma-status-1474689208840-7036
+[7360] Early termination of worker[7364] Early termination of worker
+
+[7368] Early termination of worker
+[7036] - Gracefully shutting down workers...
+[7372] Early termination of worker
+[7036] === puma shutdown: 2016-09-24 03:56:09 +0000 ===
+[7036] - Goodbye!
+=== puma startup: 2016-09-24 03:56:25 +0000 ===
+[7408] * Starting control server on unix:///tmp/puma-status-1474689385442-7408
+[7408] - Gracefully shutting down workers...
+[7558] Early termination of worker
+[7566] Early termination of worker
+[7562] Early termination of worker
+[7554] Early termination of worker
+[7408] === puma shutdown: 2016-09-24 03:57:16 +0000 ===
+[7408] - Goodbye!
+=== puma startup: 2016-09-24 03:58:17 +0000 ===
+[7725] * Starting control server on unix:///tmp/puma-status-1474689497734-7725
+[7725] - Worker 0 (pid: 7806) booted, phase: 0
+[7725] - Worker 2 (pid: 7814) booted, phase: 0
+[7725] - Worker 1 (pid: 7810) booted, phase: 0
+[7725] - Worker 3 (pid: 7818) booted, phase: 0
+[7725] - Gracefully shutting down workers...
+[7725] === puma shutdown: 2016-09-24 04:44:50 +0000 ===
+[7725] - Goodbye!
+=== puma startup: 2016-09-24 04:44:59 +0000 ===
+[833] * Starting control server on unix:///tmp/puma-status-1474692299236-833
+[833] - Worker 3 (pid: 1581) booted, phase: 0
+[833] - Worker 0 (pid: 1560) booted, phase: 0
+[833] - Worker 2 (pid: 1572) booted, phase: 0
+[833] - Worker 1 (pid: 1565) booted, phase: 0
+[833] - Gracefully shutting down workers...
+[833] === puma shutdown: 2016-09-24 05:00:50 +0000 ===
+[833] - Goodbye!
+=== puma startup: 2016-09-24 05:00:59 +0000 ===
+[837] * Starting control server on unix:///tmp/puma-status-1474693259880-837
+[837] - Worker 1 (pid: 1643) booted, phase: 0
+[837] - Worker 0 (pid: 1641) booted, phase: 0
+[837] - Worker 3 (pid: 1654) booted, phase: 0
+[837] - Worker 2 (pid: 1648) booted, phase: 0
+[837] - Gracefully shutting down workers...
+[837] === puma shutdown: 2016-09-24 05:12:25 +0000 ===
+[837] - Goodbye!
+=== puma startup: 2016-09-24 05:13:24 +0000 ===
+[14056] * Starting control server on unix:///tmp/puma-status-1474694004560-14056
+[14056] - Worker 0 (pid: 14161) booted, phase: 0
+[14056] - Worker 1 (pid: 14165) booted, phase: 0
+[14056] - Worker 2 (pid: 14170) booted, phase: 0
+[14056] - Worker 3 (pid: 14174) booted, phase: 0
+[14056] - Gracefully shutting down workers...
+[14056] === puma shutdown: 2016-09-24 06:22:33 +0000 ===
+[14056] - Goodbye!
+=== puma startup: 2016-09-24 07:11:00 +0000 ===
+[9288] * Starting control server on unix:///tmp/puma-status-1474701060638-9288
+[9288] - Worker 0 (pid: 9369) booted, phase: 0
+[9288] - Worker 1 (pid: 9373) booted, phase: 0
+[9288] - Worker 2 (pid: 9377) booted, phase: 0
+[9288] - Worker 3 (pid: 9381) booted, phase: 0

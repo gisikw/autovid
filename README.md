@@ -15,12 +15,10 @@ Things it should do:
     - [X] KSProgramming needs a link to the github in its description
   - Caveats:
     - [ ] No easy way to configure new series (must be done through console)
-    - [ ] Monetization is not working
-    - [X] Has not been tested with large files
-    - [ ] Unique jobs potentially not working
+    - [ ] Handling race conditions and ensuring no duplicates
 
 - [ ] Auto-import footage from SD cards
 
 - [ ] Auto-reencode screen recordings as CFR
 
-- [ ] Host it somewhere
+- [X] Host it somewhere

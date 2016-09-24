@@ -3,6 +3,8 @@ import CalendarDay from '../elements/CalendarDay';
 import Video from '../elements/Video';
 import xhr from '../../utils/xhr';
 
+const VIDEOS_URL = 'http://10.0.0.12/videos';
+
 function getStartingDay() {
   let date = new Date();
   date.setHours(0,0,0,0);
@@ -26,11 +28,11 @@ class DashboardPage extends Component {
   }
 
   componentDidMount() {
-    xhr.get('http://localhost:4000').then((data) => {
+    xhr.get(VIDEOS_URL).then((data) => {
       this.setState({ data: JSON.parse(data) });
     });
     poller = setInterval(() => {
-      xhr.get('http://localhost:4000').then((data) => {
+      xhr.get(VIDEOS_URL).then((data) => {
         this.setState({ data: JSON.parse(data) });
       });
     }, 5000);

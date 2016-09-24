@@ -72,28 +72,39 @@
   position: relative;
 }
 
-.Video-CheersKevinGames {
+.tint {
+  background: #000;
+  opacity: 0.5;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding: 4px 60px 4px 4px;
+}
+
+.tint-CheersKevinGames {
   background: #982222;
 }
 
-.Video-CheersKevinReads {
+.tint-CheersKevinReads {
   background: #0083ff;
 }
 
-.Video-CodeMonkeyPodcast {
+.tint-CodeMonkeyPodcast {
   background: #129912;
 }
 
-.Video-CheersKevin {
+.tint-CheersKevin {
   background: #aa4488;
 }
 
-.Video-CheersKevinVlogs {
+.tint-CheersKevinVlogs {
   background: #cccc22;
   color: #000;
 }
 
-.Video-Placeholder {
+.tint-Placeholder {
   background: #efe;
   color: #666;
 }
@@ -131,18 +142,6 @@
 }
 
 /* Series Styling */
-
-.Series {
-  background: #aaa;
-  border: 1px solid #333;
-  width: 100%;
-  max-width: 960px;
-  margin: 20px auto;
-  color: #fff;
-  font-weight: bold;
-  text-align: left;
-  padding: 10px 15px;
-}
 
 .Series-gisikwGames {
   background: #982222;

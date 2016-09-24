@@ -49,12 +49,14 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "radium": "^0.18.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
   },
   "scripts": {
     "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "deploy": "npm run build && cp -r build/* ../server/public"
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"

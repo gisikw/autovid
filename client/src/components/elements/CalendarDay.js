@@ -4,7 +4,7 @@ const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 
 class CalendarDay extends Component {
   render() {
     let classes = 'Calendar-day';
-    if (this.props.start.getDate() === (new Date()).getDate()) classes = classes + ' today';
+    if (this.props.start.toDateString() === (new Date()).toDateString()) { classes = classes + ' today'; }
 
     return (
       <div className={classes}>
