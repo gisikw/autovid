@@ -14,6 +14,7 @@ class YouTubeUpdateWorker
       account = Yt::Account.new(owner_name: channel, refresh_token: token)
       account.videos.each do |youtube_video|
         begin
+          next if youtube_video.published_at < 2.weeks.ago
           video = Video.find_or_initialize_by(youtube_id: youtube_video.id)
           status = youtube_video.privacy_status
           status = 'scheduled' if youtube_video.scheduled?

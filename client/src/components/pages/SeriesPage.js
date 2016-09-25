@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import xhr from '../../utils/xhr';
+import api from '../../utils/api';
 import Series from '../elements/Series';
 
-const SERIES_URL = 'http://10.0.0.12/series';
 let poller;
 
 class SeriesPage extends Component {
@@ -14,14 +13,10 @@ class SeriesPage extends Component {
   }
 
   componentDidMount() {
-    xhr.get(SERIES_URL).then((data) => {
-      this.setState({ data: JSON.parse(data) });
-    });
+    api.series.all().then((data) => this.setState({ data: data.data }));
     poller = setInterval(() => {
-      xhr.get(SERIES_URL).then((data) => {
-        this.setState({ data: JSON.parse(data) });
-      });
-    }, 5000);
+      api.series.all().then((data) => this.setState({ data: data.data }));
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -33,8 +28,13 @@ class SeriesPage extends Component {
       <div>
         {
           this.state.data.map((params) =>
-            <Series key={params.title} {...params } />)
+            <Series key={params.id} {...params } />)
         }
+        <button
+          onClick={() => api.series.create({series: {title: 'New Series'}})}
+        >
+          Add Series
+        </button>
       </div>
     );
   }

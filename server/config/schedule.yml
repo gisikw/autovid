@@ -2,3 +2,7 @@ youtube_updater:
   cron: "*/5 * * * *"
   class: "YouTubeUpdateWorker"
   queue: default
+video_purge:
+  cron: "*/30 * * * *"
+  class: "VideoPurgeWorker"
+  queue: default

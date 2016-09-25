@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import CalendarDay from '../elements/CalendarDay';
 import Video from '../elements/Video';
-import xhr from '../../utils/xhr';
-
-const VIDEOS_URL = 'http://10.0.0.12/videos';
+import api from '../../utils/api';
 
 function getStartingDay() {
   let date = new Date();
@@ -28,13 +26,9 @@ class DashboardPage extends Component {
   }
 
   componentDidMount() {
-    xhr.get(VIDEOS_URL).then((data) => {
-      this.setState({ data: JSON.parse(data) });
-    });
+    api.videos.all().then((data) => this.setState({ data: data.data }))
     poller = setInterval(() => {
-      xhr.get(VIDEOS_URL).then((data) => {
-        this.setState({ data: JSON.parse(data) });
-      });
+      api.videos.all().then((data) => this.setState({ data: data.data }))
     }, 5000);
   }
 
