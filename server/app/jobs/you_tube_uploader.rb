@@ -1,46 +1,92 @@
 class YouTubeUploader
   include Sidekiq::Worker
   sidekiq_options unique: :until_executed
-  VIDEO_UPLOAD_FOLDER = Rails.root.join('videos')
 
-  def perform(name)
-    series = Series.where(prefix: name[0..2]).first
-    video_file = File.join(VIDEO_UPLOAD_FOLDER, "#{name}.mp4")
-    thumbnail_file = File.join(VIDEO_UPLOAD_FOLDER, "#{name}.jpg")
-    return unless series && File.exist?(video_file) && File.exist?(thumbnail_file)
+  def perform
+    name = available_video_name
+    return if !name
 
-    info = YAML::load_file(Rails.root.join('config/ytsecrets.yml'))
-    Yt.configure do |config|
-      config.client_id = info['youtube']['client_id']
-      config.client_secret = info['youtube']['client_secret']
+    failed_uploads_for(name).each do |bad_id|
+      destroy_upload(bad_id, name)
     end
 
-    account = Yt::Account.new(
-      owner_name: series.channel,
-      refresh_token: info['youtube']['refresh_tokens'][series.channel]
-    )
+    if valid_upload_for(name)
+      move_to_tag_folder(name)
+    else
+      upload(name)
+    end
 
-    vid = account.upload_video(
-      video_file,
-      {
-        title: "Automatic Upload: #{name}",
-        description: series.description,
-        privacy_status: 'Private',
-        tags: series.tags.split(',')
-      }
-    )
+    return true
+  end
 
-    vid.upload_thumbnail thumbnail_file
+  def available_video_name
+    Dir.glob(upload_path('*.mp4')).each do |path|
+      name = File.basename(path, '.mp4')
+      if File.exist?(upload_path("#{name}.jpg")) &&
+         Series.exists?(prefix: name[0,3])
+        return name
+      end
+    end
+    nil
+  end
 
-    episode_number = name[3..-1].to_i
-    next_publish_at = series.publish_at + (episode_number - series.release_number).weeks
+  def failed_uploads_for(name)
+    account_for(name).videos.select do |video|
+      begin
+        video.title == "Automatic Upload: #{name}" &&
+        (video.deleted? || video.failed? || video.uploading?)
+      rescue Yt::Errors::NoItems
+        false
+      end
+    end.map(&:id)
+  end
 
-    vid.update publish_at: next_publish_at.utc.iso8601(3)
+  def destroy_upload(id, name)
+    Yt::Video.new(id: id, auth: account_for(name)).delete
+  end
 
-    series.publish_at = next_publish_at
-    series.release_number = episode_number
-    series.save
+  def valid_upload_for(name)
+    account_for(name).videos.each do |video|
+      begin
+        if video.title == "Automatic Upload: #{name}" &&
+           !video.deleted? && !video.failed? && !video.uploading?
+          return true
+        end
+      rescue Yt::Errors::NoItems
+      end
+    end
+    return false
+  end
 
-    File.delete(video_file, thumbnail_file)
+  def move_to_tag_folder(name)
+    FileUtils.mv(upload_path("#{name}.mp4"), tag_path("#{name}.mp4"))
+    FileUtils.mv(upload_path("#{name}.jpg"), tag_path("#{name}.jpg"))
+  end
+
+  def upload(name)
+    id = account_for(name).upload_video(
+      upload_path("#{name}.mp4"),
+      title: "Automatic Upload: #{name}",
+      privacy_status: 'Private'
+    ).id
+
+    # FIXME: Find a better way to do this
+    loop do
+      break if Yt::Video.new(id: id, auth: account_for(name)).processed?
+      sleep 60
+    end
+  end
+
+  def account_for(name)
+    series = Series.where(prefix: name[0,3]).first
+    account = yt_account(series.channel)
+  end
+
+  def upload_path(file)
+    File.join(Rails.configuration.upload_folder,file)
+  end
+
+  def tag_path(file)
+    File.join(Rails.configuration.tag_folder,file)
   end
 end

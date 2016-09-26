@@ -6,9 +6,7 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      page: 'dashboard'
-    };
+    this.state = { page: 'dashboard' };
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import radium from 'radium';
+import moment from 'moment';
 import api from '../../utils/api';
 
 class Series extends Component {
@@ -14,7 +15,10 @@ class Series extends Component {
   }
 
   edit() {
-    this.setState(Object.assign({}, this.props, { editing: true }));
+    this.setState(Object.assign({}, this.props, {
+      editing: true,
+      publish_at: moment(new Date(this.props.publish_at*1000)).format('YYYY-MM-DD HH:mm Z'),
+    }));
   }
 
   save() {

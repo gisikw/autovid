@@ -23,6 +23,11 @@ class SeriesController < ApplicationController
   private
 
   def series_params
+    if params[:publish_at]
+      params[:publish_at] = DateTime.parse(params[:publish_at])
+    else
+      params[:publish_at] = Time.now
+    end
     params.require(:series).permit(:title, :prefix, :channel, :description, :tags, :publish_at, :release_number)
   end
 end

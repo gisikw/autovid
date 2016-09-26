@@ -1,6 +1,9 @@
 import axios from 'axios';
-const SERIES_URL = 'http://10.0.0.12/series';
-const VIDEOS_URL = 'http://10.0.0.12/videos';
+const BASE_URL = process.env.NODE_ENV === 'production'
+                   ? 'http://10.0.0.12'
+                   : 'http://10.0.0.12:4000';
+const SERIES_URL = `${BASE_URL}/series`;
+const VIDEOS_URL = `${BASE_URL}/videos`;
 
 const all = (url) => () => axios.get(url);
 const create = (url) => (data) => axios.post(url, data);

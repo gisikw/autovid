@@ -27,5 +27,9 @@ module Server
     # Skip views, helpers and assets when generating a new resource.
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.api_only = true
+
+    config.upload_folder = '/mnt/backstage/upload'
+    config.tag_folder = '/mnt/backstage/tag'
+    config.archive_folder = '/mnt/backstage/archived_videos'
   end
 end

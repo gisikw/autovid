@@ -6,3 +6,11 @@ video_purge:
   cron: "*/30 * * * *"
   class: "VideoPurgeWorker"
   queue: default
+youtube_uploader:
+  cron: "*/1 * * * *"
+  class: "YouTubeUploader"
+  queue: default
+youtube_tagger:
+  cron: "*/1 * * * *"
+  class: "YouTubeTagger"
+  queue: default
